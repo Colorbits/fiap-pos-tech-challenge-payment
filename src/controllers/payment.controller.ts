@@ -1,12 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import prisma from "../client";
+import { createPayment } from '../services/createPayment.service';
 
 export async function createPayment(req: Request, res: Response, next: NextFunction) {
   try {
     console.log(req.body);
-    const data = await prisma.payment.create({
-      data: req.body,
-    });
+
+    const data = await createPayment({ data: req.body });
+
+
+
 
     res.status(201).json({
       status: true,
@@ -38,7 +41,7 @@ export async function updatePayment(req: Request, res: Response, next: NextFunct
 
     const data = await prisma.payment.update({
       where: {
-        id:  payment.id,
+        id: payment.id,
       },
       data: req.body,
     });
