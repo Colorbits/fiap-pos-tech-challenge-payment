@@ -9,8 +9,9 @@ datasource db {
 
 model Payment {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  paymentMethod String
   orderId Int 
   status String 
+  paymentUrl String 
+  paymentMethod String
 }
 
