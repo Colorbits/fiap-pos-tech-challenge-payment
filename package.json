@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch 'src/' --exec 'ts-node src/index.ts' -e ts",
-    "build2": "babel ./src --out-dir ./dist --no-copy-ignored",
     "build": "rimraf dist && tsc"
   },
   "keywords": [],
