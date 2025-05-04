@@ -6,4 +6,10 @@ export const createPaymentSchema = z.object({
   paymentMethod: z.enum(["QR_CODE", "PIX", "CREDIT_CARD"]),
 }).strict();
 
-export const updatePaymentSchema = createPaymentSchema.partial();
+export const updatePaymentSchema = z.object({
+  id: z.string().optional(),
+  orderId: z.number().optional(),
+  status: z.enum(["WAITING_PAYMENT", "PAYMENT_APPROVED", "PAYMENT_NOT_APPROVED"]).optional(),
+  paymentMethod: z.enum(["QR_CODE", "PIX", "CREDIT_CARD"]).optional(),
+  message: z.string().optional(),
+}).strict();;

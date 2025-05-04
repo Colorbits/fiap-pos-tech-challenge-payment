@@ -5,6 +5,7 @@ export interface PaymentDto {
     orderId: number;
     paymentMethod: PaymentMethodEnum;
     status: PaymentStatusEnum;
+    message?: string;
 }
 
 export interface PaymentResponseDto {
@@ -13,6 +14,7 @@ export interface PaymentResponseDto {
     paymentMethod: PaymentMethodEnum;
     status: PaymentStatusEnum;
     paymentUrl?: string;
+    message?: string;
 }
 
 export class Payment {
@@ -20,6 +22,7 @@ export class Payment {
     orderId: number;
     paymentUrl: string;
     status: PaymentStatusEnum;
+    message: string;
     paymentMethod: PaymentMethodEnum;
 
     constructor(paymentDto: PaymentDto, paymentUrl?: string) {
@@ -28,5 +31,6 @@ export class Payment {
         this.paymentMethod = paymentDto.paymentMethod;
         this.status = paymentDto.status;
         this.paymentUrl = paymentUrl || "";
+        this.message = paymentDto.message || "";
     }
 }

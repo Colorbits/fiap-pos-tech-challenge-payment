@@ -2,10 +2,9 @@ import prisma from "../../client";
 import { Payment, PaymentDto } from '../../shared/models/payment.model';
 
 export const updatePayment = async (paymentDto: PaymentDto) => {
-  const { orderId } = paymentDto;
   const foundPayment = await prisma.payment.findFirst({
     where: {
-      orderId: Number(orderId),
+      id: paymentDto.id,
     },
   });
 
@@ -13,12 +12,14 @@ export const updatePayment = async (paymentDto: PaymentDto) => {
     throw new Error("Not found");
   }
 
-  const payment = new Payment(paymentDto);
-  
+  const { id: foundPaymentId, ...foundPaymentData } = foundPayment;
+  const { id: paymentId, ...payment } = new Payment(paymentDto);
+  const data = { ...foundPaymentData, ...payment }
+
   return prisma.payment.update({
     where: {
-      id: payment.id,
+      id: paymentDto.id,
     },
-    data: payment,
+    data,
   });
 }

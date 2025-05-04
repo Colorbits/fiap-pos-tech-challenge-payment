@@ -15,7 +15,7 @@ export const createPayment = (paymentDto: PaymentDto) => {
   if (paymentDto.paymentMethod === PaymentMethodEnum.QR_CODE) {
     try {
       const paymentUrl = mercadoPagoService.generateQrCodePaymentUrl(paymentDto);
-      const {id, ...payment} = new Payment(paymentDto, paymentUrl)
+      const { id, ...payment } = new Payment(paymentDto, paymentUrl)
 
       return prisma.payment.create({
         data: payment,
