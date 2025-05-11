@@ -13,16 +13,17 @@ export async function createPayment(req: Request, res: Response, next: NextFunct
 
 export async function updatePayment(req: Request, res: Response, next: NextFunction) {
   try {
-    const data = await paymentService.updatePayment(req.body);
+    const { id } = req.params;
+    const data = await paymentService.updatePayment(id, req.body);
 
     res.json(data);
   } catch (error) {
     const errorMessage = (error as Error).message;
 
     if (errorMessage === "Not found") {
-      res.status(401).json({
+      return res.status(401).json({
         status: false,
-        message: "Not found",
+        message: errorMessage,
       });
     }
 

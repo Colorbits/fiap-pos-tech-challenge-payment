@@ -7,6 +7,6 @@ indexRoute.get("", async (req, res) => {
   res.json({ message: "FIAP Post Tech Challenge: payment service" });
 });
 
-indexRoute.use("/payment", paymentRoute);
+indexRoute.use("/payments", paymentRoute);
 
 export default indexRoute;

@@ -6,7 +6,7 @@ import { createPaymentSchema, updatePaymentSchema } from "../schemas/payment.sch
 const paymentRoute = Router();
 
 paymentRoute.post("", validateSchema(createPaymentSchema), paymentRoutes.createPayment);
-paymentRoute.put("", validateSchema(updatePaymentSchema), paymentRoutes.updatePayment);
+paymentRoute.put("/:id", validateSchema(updatePaymentSchema), paymentRoutes.updatePayment);
 paymentRoute.get("/:orderId", paymentRoutes.getPayment);
 
 export default paymentRoute;

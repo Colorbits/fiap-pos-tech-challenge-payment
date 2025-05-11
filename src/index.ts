@@ -9,7 +9,7 @@ app.use(Express.json());
 app.use(indexRoute);
 
 app.use((error: any, _req: Request, res: Response, _next: NextFunction) => {
-  res.status(501).json({
+  res.status(500).json({
     status: false,
     message: "An error occurred",
     error,
@@ -18,6 +18,10 @@ app.use((error: any, _req: Request, res: Response, _next: NextFunction) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`server is running on ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`server is running on ${port}`);
+  });
+}
+
+export default app;

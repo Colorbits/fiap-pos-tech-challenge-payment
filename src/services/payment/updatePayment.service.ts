@@ -1,10 +1,10 @@
 import prisma from "../../client";
 import { Payment, PaymentDto } from '../../shared/models/payment.model';
 
-export const updatePayment = async (paymentDto: PaymentDto) => {
+export const updatePayment = async (id: string, paymentDto: PaymentDto) => {
   const foundPayment = await prisma.payment.findFirst({
     where: {
-      id: paymentDto.id,
+      id,
     },
   });
 
@@ -18,7 +18,7 @@ export const updatePayment = async (paymentDto: PaymentDto) => {
 
   return prisma.payment.update({
     where: {
-      id: paymentDto.id,
+      id,
     },
     data,
   });
