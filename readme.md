@@ -1,10 +1,13 @@
-## running instructions
+# Documentação - Tech Challenge FIAP Customer Microservice
 
-# Node
+
+## Running Instructions
+
+### Node
 npm install
 npx prisma generate
 npm run dev
 
-# Docker
+### Docker
 docker build . -t gabrielumbelino/restaurante-api-payment:latest
 docker run -p 3001:3001 gabrielumbelino/restaurante-api-payment:latest 
