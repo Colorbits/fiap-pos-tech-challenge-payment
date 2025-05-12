@@ -8,7 +8,7 @@ export const getPayment = async (id: string) => {
   });
 }
 
-export const getPaymentByOrderId = async (orderId: number) => {
+export const getPaymentByOrderId = async (orderId: string) => {
   return prisma.payment.findMany({
     where: {
       orderId: Number(orderId),

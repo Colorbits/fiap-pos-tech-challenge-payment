@@ -7,6 +7,6 @@ const paymentRoute = Router();
 
 paymentRoute.post("", validateSchema(createPaymentSchema), paymentRoutes.createPayment);
 paymentRoute.put("/:id", validateSchema(updatePaymentSchema), paymentRoutes.updatePayment);
-paymentRoute.get("/:orderId", paymentRoutes.getPayment);
+paymentRoute.get("/:orderId", paymentRoutes.getPaymentByOrderId);
 
 export default paymentRoute;
