@@ -13,9 +13,6 @@ module.exports = {
     "test-config",
     "interfaces",
     "\\.mock\\.ts",
-    "<rootDir>/src/setupTests.ts",
-    "<rootDir>/src/client.ts",
-    "<rootDir>/src/index.ts",
     '<rootDir>/src/shared/models/*',
     '<rootDir>/src/routes/*'
   ],
