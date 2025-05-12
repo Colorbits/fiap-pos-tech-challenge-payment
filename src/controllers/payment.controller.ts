@@ -35,10 +35,8 @@ export async function getPaymentByOrderId(req: Request, res: Response, next: Nex
   try {
     const { orderId } = req.params;
     const data = await paymentService.getPaymentByOrderId(orderId);
-    console.log("data", data);
     res.json(data);
   } catch (error) {
-    console.log("data", error);
     next(error);
   }
 }
